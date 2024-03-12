@@ -5,7 +5,17 @@ import { supabase } from "../supabase";
 import { Link } from "expo-router";
 import { Pressable, View } from "react-native";
 import { Session } from "@supabase/supabase-js";
-
+import {NavigationContainer} from '@react-navigation/native'
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
+const Stack = createNativeStackNavigator();
+function HomeScreen(){
+  return (
+    <View style={{ flex: 1, backgroundColor: "pink" }}>
+      <Link href="/login"> LOGIN</Link>
+      <Link href="/score"> NEW GAME</Link>
+    </View>
+  );
+}
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
 
@@ -21,10 +31,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-    <View style={{flex:1, backgroundColor:'pink'}}>
-      <Link href="/login"> LOGIN</Link>
-      <Link href="/score"> NEW GAME</Link>
-    </View>
+        <HomeScreen/>
     </SafeAreaProvider>
   );
 }

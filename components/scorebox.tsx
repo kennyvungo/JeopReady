@@ -13,12 +13,10 @@ export default function ScoreBox(score: ScoreBoxProps){
         'GyParody': require('../assets/fonts/gyparodyhv.ttf')
     })
   return (
-    <View style={{borderWidth:1,borderColor:'black',borderStyle:'solid', padding:15, paddingVertical:30}}>
-      <Link href="/detail">
-        <Text style={{ fontFamily: "GyParody", fontSize: 17, color: "#DCAB71"}}>
-            {score.score}
-        </Text>
-      </Link>
-    </View>
+        <Link href={`/detail/${score.score}`} style={{borderWidth:1,borderColor:'black',borderStyle:'solid', padding:15, paddingVertical:30}}>
+            <Text style={{ fontFamily: "GyParody", fontSize: 17, color: "#DCAB71"}}>
+                {score.score}
+            </Text>
+        </Link>
   );
 }
