@@ -1,9 +1,9 @@
 import "react-native-url-polyfill/auto";
 import { useState, useEffect } from "react";
-import { supabase } from "./supabase";
-import Auth from "./components/auth";
-import Account from "./components/account";
-import { View } from "react-native";
+import {SafeAreaProvider} from 'react-native-safe-area-context'
+import { supabase } from "../supabase";
+import { Link } from "expo-router";
+import { Pressable, View } from "react-native";
 import { Session } from "@supabase/supabase-js";
 
 export default function App() {
@@ -20,12 +20,11 @@ export default function App() {
   }, []);
 
   return (
-    <View>
-      {session && session.user ? (
-        <Account key={session.user.id} session={session} />
-      ) : (
-        <Auth />
-      )}
+    <SafeAreaProvider>
+    <View style={{flex:1, backgroundColor:'pink'}}>
+      <Link href="/login"> LOGIN</Link>
+      <Link href="/score"> NEW GAME</Link>
     </View>
+    </SafeAreaProvider>
   );
 }

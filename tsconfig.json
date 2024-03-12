@@ -4,6 +4,14 @@
     "strict": true
   },
   "expo":{
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/gyparodyhv.ttf","./assets/fonts/gyparodyrg.ttf"]
+        }
+      ]
+    ],
     "scheme": "com.supabase"
   }
 }
