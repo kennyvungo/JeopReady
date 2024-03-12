@@ -4,7 +4,6 @@ import { View, StyleSheet } from 'react-native'
 import { Text } from 'react-native-elements'
 import { Link } from 'expo-router'
 import ScoreBox from '../components/scorebox'
-const word:string = "100"
 export default function App(){
   return (
     <SafeAreaProvider>
