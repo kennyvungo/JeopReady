@@ -1,18 +1,20 @@
 import React from 'react'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Pressable } from 'react-native'
 import { Text } from 'react-native-elements'
 import { Link } from 'expo-router'
 import ScoreBox from '../components/scorebox'
+import {create} from 'zustand'
+import { useCurrentScoreStore } from '../globals'
 
 export default function App(){
+  const currentScore = useCurrentScoreStore((state)=> state.score)
+  const increaseScore = useCurrentScoreStore((state) => state.increase)
   return (
-    <SafeAreaProvider>
       <View
         style={{ flex: 1, flexDirection: "column", backgroundColor: "red" }}
       >
         <View style={styles.header}>
-          <Text>Current Score : 0</Text>
+          <Text>Current Score : {currentScore}</Text>
         </View>
 
         <View style={styles.body}>
@@ -63,7 +65,6 @@ export default function App(){
           <Link href="/"> BACK TO HOME</Link>
         </View>
       </View>
-    </SafeAreaProvider>
   );
 }
 
