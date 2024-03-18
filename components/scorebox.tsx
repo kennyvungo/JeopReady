@@ -1,22 +1,34 @@
 import React from 'react'
 import { Text } from 'react-native-elements'
-import { View } from 'react-native'
-import { Pressable } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { Link } from 'expo-router'
 import {useFonts} from 'expo-font'
 type ScoreBoxProps = {
     score: string;
+    status :string;
 }
 
-export default function ScoreBox(score: ScoreBoxProps){
+export default function ScoreBox(props: ScoreBoxProps){
     const [fontsLoaded] = useFonts({
         'GyParody': require('../assets/fonts/gyparodyhv.ttf')
     })
+    const boxStyle = props.status === 'new' ? styles.new : styles.wrong
   return (
-        <Link href={`/detail/${score.score}`} style={{borderWidth:1,borderColor:'black',borderStyle:'solid', padding:15, paddingVertical:30}}>
-            <Text style={{ fontFamily: "GyParody", fontSize: 17, color: "#DCAB71"}}>
-                {score.score}
+      <Link href={`/detail/${props.score}`} style={[{borderWidth:1,borderColor:'black',borderStyle:'solid', padding:15, paddingVertical:30 },boxStyle]}>
+            <Text>
+                {props.score}
             </Text>
         </Link>
   );
 }
+const styles = StyleSheet.create({
+    correct:{
+        backgroundColor: 'green'
+    },
+    wrong:{
+        backgroundColor: 'red'
+    },
+    new:{
+        backgroundColor: 'white'
+    }
+})
