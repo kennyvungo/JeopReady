@@ -7,12 +7,13 @@ import { Pressable, View } from "react-native";
 import { Session } from "@supabase/supabase-js";
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import { StyleSheet } from "react-native";
 const Stack = createNativeStackNavigator();
 function HomeScreen(){
   return (
-    <View style={{ flex: 1, backgroundColor: "pink" }}>
-      <Link href="/login"> LOGIN</Link>
-      <Link href="/score"> NEW GAME</Link>
+    <View style={{ flex: 1, backgroundColor: "pink",  flexDirection: 'column', justifyContent:'space-around', alignItems:'center'}}>
+      <Link style={styles.entryButton} href="/login"> LOGIN</Link>
+      <Link style={styles.entryButton} href="/score"> NEW GAME</Link>
     </View>
   );
 }
@@ -35,3 +36,12 @@ export default function App() {
     </SafeAreaProvider>
   );
 }
+const styles = StyleSheet.create({
+  entryButton:{
+    backgroundColor: 'lightblue',
+    width:100,
+    borderRadius: 36,
+    borderColor: 'black',
+    padding: 20,
+  }
+})

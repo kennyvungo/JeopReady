@@ -5,15 +5,33 @@ import { Text } from "react-native-elements";
 import { Link, useLocalSearchParams } from "expo-router";
 import { useCurrentScoreStore } from "../../globals";
 import { useRouter } from "expo-router";
-export default function Detail() {
-  const { slug } = useLocalSearchParams();
+import { useScoreBoardStore } from "../../globals";
+
+type DetailProps = {
+  col: number;
+  row: number;
+}
+export default function Detail(props:DetailProps) {
+  const params = useLocalSearchParams();
   const currentScore = useCurrentScoreStore((state) => state.score);
   const increaseScore = useCurrentScoreStore((state) => state.increase);
+  const currentBoard = useScoreBoardStore((state) => state.status)
+  const updateBoardState = useScoreBoardStore((state) => state.update)
   const router = useRouter();
+  const updateBoard = (status:string) => {
+    let row = params.row
+    let col = params.col
+    currentBoard[Number(row)][Number(col)] = status
+    updateBoardState(currentBoard)
+  }
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text> Current Score: {currentScore}</Text>
+        <Text> Current Score : {currentScore}</Text>
+        <Text>
+        {props.col}
+        {props.row}
+        </Text>
       </View>
       <View
         style={{
@@ -23,12 +41,13 @@ export default function Detail() {
           alignItems: "center",
         }}
       >
-        <Text> ${slug}</Text>
+        <Text> ${params.slug}</Text>
         <View style={styles.buttons}>
           <Pressable
             style={styles.correct}
             onPressIn={() => {
-              increaseScore(Number(slug));
+              increaseScore(Number(params.slug));
+              updateBoard("correct")
               router.navigate("/score");
             }}
           >
@@ -37,6 +56,7 @@ export default function Detail() {
           <Pressable
             style={styles.skip}
             onPressIn={() => {
+              updateBoard("skip");
               router.navigate("/score");
             }}
           >
@@ -45,7 +65,8 @@ export default function Detail() {
           <Pressable
             style={styles.wrong}
             onPressIn={() => {
-              increaseScore(-Number(slug));
+              increaseScore(-Number(params.slug));
+              updateBoard("wrong");
               router.navigate("/score");
             }}
           >
@@ -53,10 +74,9 @@ export default function Detail() {
           </Pressable>
         </View>
       </View>
-      <Link style={styles.header} href="/score">
-        {" "}
-        BACK TO GAME
-      </Link>
+      <View style={styles.header}>
+        <Link href="/score">BACK TO GAME</Link>
+      </View>
     </View>
   );
 }

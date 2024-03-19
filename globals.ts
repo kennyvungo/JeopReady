@@ -6,16 +6,16 @@ interface CurrentScoreState {
 }
 interface ScoreBoardState{
   status: string[][],
-
+  update: (by: string[][]) => void;
 }
 const initialBoard = {
   status: [
-    ["new", "new", "new", "new", "new"],
-    ["new", "new", "new", "new", "new"],
-    ["new", "new", "new", "new", "new"],
-    ["new", "new", "new", "new", "new"],
-    ["new", "new", "new", "new", "new"],
-    ["new", "new", "new", "new", "new"],
+    ["new", "new", "new", "new", "new","new"],
+    ["new", "new", "new", "new", "new","new"],
+    ["new", "new", "new", "new", "new","new"],
+    ["new", "new", "new", "new", "new","new"],
+    ["new", "new", "new", "new", "new","new"],
+    ["new", "new", "new", "new", "new","new"],
   ],
 };
 
@@ -25,5 +25,6 @@ export const useCurrentScoreStore = create<CurrentScoreState>()((set) => ({
 }));
 
 export const useScoreBoardStore = create<ScoreBoardState>()((set) => ({
-  status : initialBoard.status
+  status : initialBoard.status,
+  update: (by) => set((state) => ({status: by}))
   }))

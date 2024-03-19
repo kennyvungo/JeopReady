@@ -7,7 +7,6 @@ import { useCurrentScoreStore, useScoreBoardStore } from '../globals'
 
 export default function App(){
   const currentScore = useCurrentScoreStore((state)=> state.score)
-  const increaseScore = useCurrentScoreStore((state) => state.increase)
   const scoreBoard = useScoreBoardStore((state) => state.status)
   return (
     <View
@@ -18,47 +17,35 @@ export default function App(){
       </View>
 
       <View style={styles.body}>
-        <View style={styles.column}>
-          <ScoreBox score="100" status="new" />
-          <ScoreBox score="200" status= "new" />
-          <ScoreBox score="300" status="new" />
-          <ScoreBox score="400" status="new" />
-          <ScoreBox score="500" status="wrong" />
+        <View style={styles.row}>
+          {scoreBoard[0].map((status, col) => (
+            <ScoreBox col={col} row={0} score="100" status={status} />
+          ))}
         </View>
-        <View style={styles.column}>
-          <ScoreBox score="100" status="new" />
-          <ScoreBox score="200" status="new" />
-          <ScoreBox score="300" status="new" />
-          <ScoreBox score="400" status="new" />
-          <ScoreBox score="500" status="new" />
+        <View style={styles.row}>
+          {scoreBoard[1].map((status, col) => (
+            <ScoreBox col={col} row={1} score="200" status={status} />
+          ))}
         </View>
-        <View style={styles.column}>
-          <ScoreBox score="100" status="new" />
-          <ScoreBox score="200" status="new" />
-          <ScoreBox score="300" status="new" />
-          <ScoreBox score="400" status="new" />
-          <ScoreBox score="500" status="new" />
+        <View style={styles.row}>
+          {scoreBoard[2].map((status, col) => (
+            <ScoreBox col={col} row={2} score="300" status={status} />
+          ))}
         </View>
-        <View style={styles.column}>
-          <ScoreBox score="100" status="new" />
-          <ScoreBox score="200" status="new" />
-          <ScoreBox score="300" status="new" />
-          <ScoreBox score="400" status="new" />
-          <ScoreBox score="500" status="new" />
+        <View style={styles.row}>
+          {scoreBoard[3].map((status, col) => (
+            <ScoreBox col={col} row={3} score="400" status={status} />
+          ))}
         </View>
-        <View style={styles.column}>
-          <ScoreBox score="100" status="new" />
-          <ScoreBox score="200" status="new" />
-          <ScoreBox score="300" status="new" />
-          <ScoreBox score="400" status="new" />
-          <ScoreBox score="500" status="new" />
+        <View style={styles.row}>
+          {scoreBoard[4].map((status, col) => (
+            <ScoreBox col={col} row={4} score="500" status={status} />
+          ))}
         </View>
-        <View style={styles.column}>
-          <ScoreBox score="100" status="new" />
-          <ScoreBox score="200" status="new" />
-          <ScoreBox score="300" status="new" />
-          <ScoreBox score="400" status="new" />
-          <ScoreBox score="500" status="new" />
+        <View style={styles.row}>
+          {scoreBoard[5].map((status, col) => (
+            <ScoreBox col={col} row={5} score="600" status={status} />
+          ))}
         </View>
       </View>
       <View style={styles.header}>
@@ -78,13 +65,18 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 15,
-    flexDirection: 'row',
+    flexDirection: 'column',
     backgroundColor: "white",
   },
   column:{
     flex:1,
     flexDirection:'column',
     justifyContent:'center'
+  },
+  row:{
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
   }
 });
 
