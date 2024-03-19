@@ -37,14 +37,17 @@ export default function ScoreBox(props: ScoreBoxProps) {
           borderWidth: 1,
           borderColor: "black",
           borderStyle: "solid",
-          padding: 12,
-          paddingVertical: 30,
+          flexDirection: 'row',
           flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign:'center',
+
         },
         boxStyle,
       ]}
     >
-      <Text>{props.score}</Text>
+      <Text style={styles.text}>{props.score}</Text>
     </Link>
   );
 }
@@ -64,4 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: "orange",
     pointerEvents: "none",
   },
+  text:{
+    textAlignVertical: 'center'
+  }
 });

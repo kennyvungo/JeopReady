@@ -1,5 +1,4 @@
 import React from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import { View, StyleSheet, Pressable } from "react-native";
 import { Text } from "react-native-elements";
 import { Link, useLocalSearchParams } from "expo-router";
@@ -122,7 +121,7 @@ const styles = StyleSheet.create({
     flex: 11,
     backgroundColor: "white",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
   },
 });
