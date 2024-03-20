@@ -21,14 +21,16 @@ export default function App(){
   ];
   return (
     <View
-      style={{ flex: 1, flexDirection: "column", backgroundColor: "white" }}
+      style={{ flex: 1, flexDirection: "column", backgroundColor: "#F6F6F6" }}
     >
       <View style={styles.header}>
-        <Pressable onPressIn={() => {
-          updateBoardState(emptyBoard)
-          clearScore()
-        }
-        } style={{ flex: 1 }}>
+        <Pressable
+          onPressIn={() => {
+            updateBoardState(emptyBoard);
+            clearScore();
+          }}
+          style={{ flex: 1 }}
+        >
           <Text>CLEAR</Text>
         </Pressable>
         <Text>Current Score : {currentScore}</Text>
@@ -76,25 +78,24 @@ export default function App(){
 const styles = StyleSheet.create({
   header: {
     flex: 1,
-    backgroundColor: "white",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   },
   body: {
     flex: 15,
-    flexDirection: 'column',
-    backgroundColor: "white",
+    flexDirection: "column",
+    backgroundColor: "#F6F6F6",
   },
-  column:{
-    flex:1,
-    flexDirection:'column',
-    justifyContent:'center'
-  },
-  row:{
+  column: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  }
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  row: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
 });
 

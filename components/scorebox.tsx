@@ -61,13 +61,14 @@ const styles = StyleSheet.create({
     pointerEvents: "none",
   },
   new: {
-    backgroundColor: "white",
+    backgroundColor: "#204BA4",
   },
   skip: {
     backgroundColor: "orange",
     pointerEvents: "none",
   },
-  text:{
-    textAlignVertical: 'center'
-  }
+  text: {
+    textAlignVertical: "center",
+    color: 'white'
+  },
 });
