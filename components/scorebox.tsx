@@ -3,6 +3,8 @@ import { Text } from "react-native-elements";
 import { View, StyleSheet } from "react-native";
 import { Link } from "expo-router";
 import { useFonts } from "expo-font";
+import { useRouter } from "expo-router";
+import { Pressable } from "react-native";
 type ScoreBoxProps = {
   score: string;
   status: string;
@@ -11,6 +13,7 @@ type ScoreBoxProps = {
 };
 
 export default function ScoreBox(props: ScoreBoxProps) {
+  const router = useRouter()
   let boxStyle = {};
   switch (props.status) {
     case "correct":
@@ -27,7 +30,7 @@ export default function ScoreBox(props: ScoreBoxProps) {
       break;
   }
   return (
-    <View
+    <Pressable
       style={[
         {
           borderWidth: 1,
@@ -36,20 +39,21 @@ export default function ScoreBox(props: ScoreBoxProps) {
           flexDirection: "column",
           flex: 1,
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
         },
         boxStyle,
       ]}
-    >
-      <Link
-        href={{
+      onPressIn={() =>
+        router.push({
           pathname: `/detail/${props.score}`,
           params: { col: props.col, row: props.row },
-        }}
-      >
-        <Text style={props.status == 'skip' ? styles.skiptext : styles.text}>{props.score}</Text>
-      </Link>
-    </View>
+        })
+      }
+    >
+          <Text style={props.status == "skip" ? styles.skiptext : styles.text}>
+            {props.score}
+          </Text>
+    </Pressable>
   );
 }
 const styles = StyleSheet.create({
