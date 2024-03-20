@@ -27,28 +27,29 @@ export default function ScoreBox(props: ScoreBoxProps) {
       break;
   }
   return (
-    <Link
-      href={{
-        pathname:`/detail/${props.score}`,
-        params: { col: props.col, row: props.row },
-      }}
+    <View
       style={[
         {
           borderWidth: 1,
           borderColor: "black",
           borderStyle: "solid",
-          flexDirection: 'row',
+          flexDirection: "column",
           flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign:'center',
-
+          alignItems: "center",
+          justifyContent: "center"
         },
         boxStyle,
       ]}
     >
-      <Text style={styles.text}>{props.score}</Text>
-    </Link>
+      <Link
+        href={{
+          pathname: `/detail/${props.score}`,
+          params: { col: props.col, row: props.row },
+        }}
+      >
+        <Text style={props.status == 'skip' ? styles.skiptext : styles.text}>{props.score}</Text>
+      </Link>
+    </View>
   );
 }
 const styles = StyleSheet.create({
@@ -64,11 +65,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#204BA4",
   },
   skip: {
-    backgroundColor: "orange",
+    backgroundColor: "white",
     pointerEvents: "none",
   },
   text: {
     textAlignVertical: "center",
     color: 'white'
   },
+  skiptext:{
+    color: 'blue'
+  }
 });

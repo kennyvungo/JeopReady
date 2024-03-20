@@ -33,7 +33,12 @@ export default function App(){
         >
           <Text>CLEAR</Text>
         </Pressable>
-        <Text>Current Score : {currentScore}</Text>
+        <Text>
+          Current Score :{" "}
+          <Text style={currentScore >= 0 ? styles.positive : styles.negative}>
+            {currentScore}
+          </Text>
+        </Text>
       </View>
 
       <View style={styles.body}>
@@ -62,11 +67,6 @@ export default function App(){
             <ScoreBox col={col} row={4} score="500" status={status} />
           ))}
         </View>
-        <View style={styles.row}>
-          {scoreBoard[5].map((status, col) => (
-            <ScoreBox col={col} row={5} score="600" status={status} />
-          ))}
-        </View>
       </View>
       <View style={styles.header}>
         <Link href="/"> BACK TO HOME</Link>
@@ -81,9 +81,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    marginHorizontal: 5,
   },
   body: {
-    flex: 15,
+    flex: 10,
     flexDirection: "column",
     backgroundColor: "#F6F6F6",
   },
@@ -97,5 +98,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
+  positive:{
+    color: 'green'
+  },
+  negative:{
+    color: 'red'
+  }
 });
+
 

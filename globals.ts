@@ -15,8 +15,7 @@ export const initialBoard = {
     ["new", "new", "new", "new", "new","new"],
     ["new", "new", "new", "new", "new","new"],
     ["new", "new", "new", "new", "new","new"],
-    ["new", "new", "new", "new", "new","new"],
-    ["new", "new", "new", "new", "new","new"],
+    ["new", "new", "new", "new", "new","new"]
   ],
 };
 
