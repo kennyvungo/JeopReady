@@ -7,8 +7,8 @@ import { useCurrentScoreStore, useScoreBoardStore } from "../globals";
 
 export default function App() {
   const currentScore = useCurrentScoreStore((state) => state.score);
-  const scoreBoard = useScoreBoardStore((state) => state.status);
-  const updateBoardState = useScoreBoardStore((state) => state.update);
+  const scoreBoard = useScoreBoardStore((state) => state.doubles);
+  const updateBoardState = useScoreBoardStore((state) => state.updatedouble);
   const clearScore = useCurrentScoreStore((state) => state.clear);
   const currDate = new Date().toLocaleDateString();
 
@@ -33,8 +33,8 @@ export default function App() {
             flexDirection: "row",
           }}
         >
-          <Link href="/double" style={{ flex: 1 }}>
-            DOUBLE
+          <Link href="/score" style={{ flex: 1 }}>
+            SINGLE
           </Link>
         </View>
         <View
@@ -71,9 +71,9 @@ export default function App() {
               key={col}
               col={col}
               row={0}
-              score="200"
+              score="400"
               status={status}
-              double={false}
+              double={true}
             />
           ))}
         </View>
@@ -83,9 +83,9 @@ export default function App() {
               key={col}
               col={col}
               row={1}
-              score="400"
+              score="800"
               status={status}
-              double={false}
+              double={true}
             />
           ))}
         </View>
@@ -95,9 +95,9 @@ export default function App() {
               key={col}
               col={col}
               row={2}
-              score="600"
+              score="1200"
               status={status}
-              double={false}
+              double={true}
             />
           ))}
         </View>
@@ -106,9 +106,9 @@ export default function App() {
             <ScoreBox
               col={col}
               row={3}
-              score="800"
+              score="1600"
               status={status}
-              double={false}
+              double={true}
             />
           ))}
         </View>
@@ -117,9 +117,9 @@ export default function App() {
             <ScoreBox
               col={col}
               row={4}
-              score="1000"
+              score="2000"
               status={status}
-              double={false}
+              double={true}
             />
           ))}
         </View>
@@ -135,9 +135,7 @@ export default function App() {
             <Text>CLEAR</Text>
           </Pressable>
         </View>
-        <View
-          style={{ flex: 1, justifyContent: "flex-end", flexDirection: "row" }}
-        >
+        <View style={{ flex: 1, justifyContent: "flex-end", flexDirection:'row'}}>
           <Link href="/"> BACK TO HOME</Link>
         </View>
       </View>
@@ -150,7 +148,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    marginHorizontal: 5
+    marginHorizontal: 5,
   },
   body: {
     flex: 10,

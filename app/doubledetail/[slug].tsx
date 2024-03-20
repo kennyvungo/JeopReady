@@ -10,27 +10,27 @@ type DetailProps = {
   col: number;
   row: number;
   double: boolean;
-}
-export default function Detail(props:DetailProps) {
+};
+export default function Detail(props: DetailProps) {
   const params = useLocalSearchParams();
   const currentScore = useCurrentScoreStore((state) => state.score);
   const increaseScore = useCurrentScoreStore((state) => state.increase);
-  const currentBoard = useScoreBoardStore((state) => state.status)
-  const updateBoardState = useScoreBoardStore((state) => state.update)
+  const currentBoard = useScoreBoardStore((state) => state.doubles);
+  const updateBoardState = useScoreBoardStore((state) => state.updatedouble);
   const router = useRouter();
-  const updateBoard = (status:string) => {
-    let row = params.row
-    let col = params.col
-    currentBoard[Number(row)][Number(col)] = status
-    updateBoardState(currentBoard)
-  }
+  const updateBoard = (status: string) => {
+    let row = params.row;
+    let col = params.col;
+    currentBoard[Number(row)][Number(col)] = status;
+    updateBoardState(currentBoard);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text> Current Score : {currentScore}</Text>
         <Text>
-        {props.col}
-        {props.row}
+          {props.col}
+          {props.row}
         </Text>
       </View>
       <View
@@ -47,8 +47,8 @@ export default function Detail(props:DetailProps) {
             style={styles.correct}
             onPressIn={() => {
               increaseScore(Number(params.slug));
-              updateBoard("correct")
-              router.navigate('/score');
+              updateBoard("correct");
+              router.navigate("/double");
             }}
           >
             <Text>Correct</Text>
@@ -57,7 +57,7 @@ export default function Detail(props:DetailProps) {
             style={styles.skip}
             onPressIn={() => {
               updateBoard("skip");
-              router.navigate('/score');
+              router.navigate("/double");
             }}
           >
             <Text>Skip</Text>
@@ -67,7 +67,7 @@ export default function Detail(props:DetailProps) {
             onPressIn={() => {
               increaseScore(-Number(params.slug));
               updateBoard("wrong");
-              router.navigate('/score');
+              router.navigate("/double");
             }}
           >
             <Text>Wrong</Text>
@@ -75,7 +75,7 @@ export default function Detail(props:DetailProps) {
         </View>
       </View>
       <View style={styles.header}>
-        <Link href="/score">BACK TO GAME</Link>
+        <Link href="/double">BACK TO GAME</Link>
       </View>
     </View>
   );
@@ -101,8 +101,8 @@ const styles = StyleSheet.create({
     backgroundColor: "green",
     borderRadius: 10,
   },
-  skip:{
-      justifyContent: "center",
+  skip: {
+    justifyContent: "center",
     alignItems: "center",
     height: 100,
     width: 100,

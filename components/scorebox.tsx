@@ -10,6 +10,7 @@ type ScoreBoxProps = {
   status: string;
   col: number;
   row: number;
+  double: boolean;
 };
 
 export default function ScoreBox(props: ScoreBoxProps) {
@@ -45,8 +46,8 @@ export default function ScoreBox(props: ScoreBoxProps) {
       ]}
       onPressIn={() =>
         router.push({
-          pathname: `/detail/${props.score}`,
-          params: { col: props.col, row: props.row },
+          pathname: `/${props.double ? "doubledetail" : "detail"}/${props.score}`,
+          params: { col: props.col, row: props.row, double: props.double },
         })
       }
     >
