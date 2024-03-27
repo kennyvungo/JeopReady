@@ -14,14 +14,21 @@ interface ScoreBoardState{
 
 export const initialBoard = {
   status: [
-    ["new", "new", "new", "new", "new","new"],
-    ["new", "new", "new", "new", "new","new"],
-    ["new", "new", "new", "new", "new","new"],
-    ["new", "new", "new", "new", "new","new"],
-    ["new", "new", "new", "new", "new","new"]
+    ["new", "new", "new", "new", "new", "new"],
+    ["new", "new", "new", "new", "new", "new"],
+    ["new", "new", "new", "new", "new", "new"],
+    ["new", "new", "new", "new", "new", "new"],
+    ["new", "new", "new", "new", "new", "new"],
+  ],
+  double: [
+    ["new", "new", "new", "new", "new", "new"],
+    ["new", "new", "new", "new", "new", "new"],
+    ["new", "new", "new", "new", "new", "new"],
+    ["new", "new", "new", "new", "new", "new"],
+    ["new", "new", "new", "new", "new", "new"],
   ],
 };
-
+ 
 export const useCurrentScoreStore = create<CurrentScoreState>()((set) => ({
   score: 0,
   increase: (by) => set((state) => ({ score: state.score + by })),
@@ -31,6 +38,6 @@ export const useCurrentScoreStore = create<CurrentScoreState>()((set) => ({
 export const useScoreBoardStore = create<ScoreBoardState>()((set) => ({
   status : initialBoard.status,
   update: (by) => set((state) => ({status: by})),
-  doubles: initialBoard.status,
+  doubles: initialBoard.double,
   updatedouble: (by) => set((state)=> ({doubles: by})),
   }))

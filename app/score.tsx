@@ -68,7 +68,7 @@ export default function App() {
         <View style={styles.row}>
           {scoreBoard[0].map((status, col) => (
             <ScoreBox
-              key={col}
+              key={`${col}0`}
               col={col}
               row={0}
               score="200"
@@ -80,7 +80,7 @@ export default function App() {
         <View style={styles.row}>
           {scoreBoard[1].map((status, col) => (
             <ScoreBox
-              key={col}
+              key={`${col}1`}
               col={col}
               row={1}
               score="400"
@@ -92,7 +92,7 @@ export default function App() {
         <View style={styles.row}>
           {scoreBoard[2].map((status, col) => (
             <ScoreBox
-              key={col}
+              key={`${col}2`}
               col={col}
               row={2}
               score="600"
@@ -104,6 +104,7 @@ export default function App() {
         <View style={styles.row}>
           {scoreBoard[3].map((status, col) => (
             <ScoreBox
+              key={`${col}"3"`}
               col={col}
               row={3}
               score="800"
@@ -115,6 +116,7 @@ export default function App() {
         <View style={styles.row}>
           {scoreBoard[4].map((status, col) => (
             <ScoreBox
+              key={`${col}4`}
               col={col}
               row={4}
               score="1000"
